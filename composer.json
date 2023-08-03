@@ -1,0 +1,25 @@
+{
+    "name": "sunsgne/antchain-php-sdk",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "antcloud",
+        "antchain",
+        "chain"
+    ],
+    "description": "蚂蚁链版权保护第三方PHP SDK",
+    "autoload": {
+        "psr-4": {
+            "AntCloudSDKCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AntCloudTests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    }
+}
