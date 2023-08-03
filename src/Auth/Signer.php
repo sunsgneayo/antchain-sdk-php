@@ -28,8 +28,7 @@ class Signer
                 $strToSign .= '&' . static::standardUrlEncode($key) . '=' . static::standardUrlEncode($value);
             }
             $strToSign = substr($strToSign, 1);
-        }
-        else {
+        } else {
             // 如果已经是字符串了，那么不用做其他的处理
             $strToSign = $params;
         }
@@ -48,8 +47,8 @@ class Signer
     public static function extractRespStrToSign($respBody)
     {
         // 先看一下通过decode再encode，判断是否刚好是原始respBody的子串的，是的话直接返回
-        $respDecoded = json_decode($respBody, true);
-        $respContent = $respDecoded['response'];
+        $respDecoded        = json_decode($respBody, true);
+        $respContent        = $respDecoded['response'];
         $respContentJsonStr = json_encode($respContent);
         if (strpos($respBody, $respContentJsonStr) !== false) {
             return $respContentJsonStr;
@@ -57,8 +56,8 @@ class Signer
 
         // 如果不是的话（比如因为respBody中带有一些不必要的空格换行等字符），我们需要自己手动解析出来
         // 首先判断response和sign在json string中哪个排在前面
-        $respNodeKey = '"response"';
-        $signNodeKey = '"sign"';
+        $respNodeKey       = '"response"';
+        $signNodeKey       = '"sign"';
         $respFirstOccurIdx = strpos($respBody, $respNodeKey);
         $signFirstOccurIdx = strpos($respBody, $signNodeKey);
         if ($respFirstOccurIdx === false || $signFirstOccurIdx === false) {
@@ -66,15 +65,14 @@ class Signer
             return null;
         }
         $respNodeStartIdx = $respFirstOccurIdx;
-        $extractStartIdx = strpos($respBody, '{', $respNodeStartIdx);
+        $extractStartIdx  = strpos($respBody, '{', $respNodeStartIdx);
         if ($respFirstOccurIdx < $signFirstOccurIdx) {
             // response出现在sign前面
             $signLastOccurIdx = strrpos($respBody, $signNodeKey);
-            $extractEndIdx = strrpos($respBody, '}', $signLastOccurIdx - strlen($respBody));
-        }
-        else {
+            $extractEndIdx    = strrpos($respBody, '}', $signLastOccurIdx - strlen($respBody));
+        } else {
             // response出现在sign后面
-            $extractEndIdx = strrpos($respBody, '}',-2);
+            $extractEndIdx = strrpos($respBody, '}', -2);
         }
         return substr($respBody, $extractStartIdx, $extractEndIdx + 1 - $extractStartIdx);
     }
@@ -89,8 +87,7 @@ class Signer
         $res = urlencode($str);
         $res = preg_replace('/\+/', '%20', $res);
         $res = preg_replace('/\*/', '%2A', $res);
-        $res = preg_replace('/%7E/', '~', $res);
-        return $res;
+        return preg_replace('/%7E/', '~', $res);
     }
 }
 

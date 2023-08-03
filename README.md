@@ -1,5 +1,6 @@
-# antfin-php-sdk
+# antchain-php-sdk
+蚂蚁链版权保护PHP-SDK
 
 ```
-composer require tinywan/antfin-php-sdk
+composer require sunsgne/antchain-php-sdk
 ```

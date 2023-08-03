@@ -1,4 +1,5 @@
 <?php
+
 namespace AntCloudSDKCore\Http;
 
 
@@ -19,6 +20,6 @@ class HttpResponse
     public function __construct($status_code, $body)
     {
         $this->status_code = $status_code;
-        $this->body = $body;
+        $this->body        = $body;
     }
 }

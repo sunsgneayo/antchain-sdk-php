@@ -22,7 +22,7 @@ class ClientException extends \Exception
     public function __construct($errCode, $errMsg)
     {
         $this->errCode = $errCode;
-        $this->errMsg = $errMsg;
+        $this->errMsg  = $errMsg;
     }
 
     public function __toString()

@@ -32,7 +32,7 @@ class AntCloudClient
 
     /**
      * AntCloudClient constructor.
-     * @param string $endpoint  访问地址
+     * @param string $endpoint 访问地址
      * @param string $accessKey
      * @param string $accessSecret
      * @param callbale $requester 请求器
@@ -50,14 +50,14 @@ class AntCloudClient
                                 $userAgent = null,
                                 $debugMode = false)
     {
-        $this->endpoint = $endpoint;
-        $this->accessKey = $accessKey;
+        $this->endpoint     = $endpoint;
+        $this->accessKey    = $accessKey;
         $this->accessSecret = $accessSecret;
-        $this->requester = $requester;
-        $this->checkSign = $checkSign;
-        $this->timeout = $timeout;
-        $this->userAgent = $userAgent;
-        $this->debugMode = $debugMode;
+        $this->requester    = $requester;
+        $this->checkSign    = $checkSign;
+        $this->timeout      = $timeout;
+        $this->userAgent    = $userAgent;
+        $this->debugMode    = $debugMode;
     }
 
     /**
@@ -123,13 +123,13 @@ class AntCloudClient
             $requestParams = $request;
         }
 
-        $content = WebUtil::buildCustomFormParams($requestParams);
-        $content['access_key'] = $this->accessKey;
-        $content['sign_type'] = self::DEFAULT_SIGN_TYPE;
-        $content['req_msg_id'] = CommonUtil::generateReqMsgId();
-        $content['req_time'] = CommonUtil::generateIsoFormatCurrentDate();
+        $content                = WebUtil::buildCustomFormParams($requestParams);
+        $content['access_key']  = $this->accessKey;
+        $content['sign_type']   = self::DEFAULT_SIGN_TYPE;
+        $content['req_msg_id']  = CommonUtil::generateReqMsgId();
+        $content['req_time']    = CommonUtil::generateIsoFormatCurrentDate();
         $content['sdk_version'] = self::ANTCLOUD_SDK_VERSION;
-        $content['sign'] = Signer::sign($content, $this->accessSecret);
+        $content['sign']        = Signer::sign($content, $this->accessSecret);
         return $content;
     }
 

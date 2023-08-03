@@ -9,10 +9,10 @@ namespace AntCloudSDKCore\Http;
  */
 class HttpRequest
 {
-    const POST_METHOD = 'POST';
+    const POST_METHOD  = 'POST';
     const HTTPS_SCHEME = 'https';
-    const HTTP_PORT = 80;
-    const HTTPS_PORT = 443;
+    const HTTP_PORT    = 80;
+    const HTTPS_PORT   = 443;
 
     public $url;
     public $host;
@@ -42,7 +42,7 @@ class HttpRequest
                                 $certFile = null,
                                 $timeout = null)
     {
-        $this->url = $url;
+        $this->url  = $url;
         $this->host = parse_url($url, PHP_URL_HOST);
 
         /**
@@ -58,12 +58,12 @@ class HttpRequest
             }
         }
 
-        $this->content = $content;
-        $this->method = $method;
-        $this->headers = $headers;
-        $this->keyFile = $keyFile;
+        $this->content  = $content;
+        $this->method   = $method;
+        $this->headers  = $headers;
+        $this->keyFile  = $keyFile;
         $this->certFile = $certFile;
-        $this->timeout = $timeout;
+        $this->timeout  = $timeout;
     }
 
     /**

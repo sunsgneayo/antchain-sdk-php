@@ -41,15 +41,15 @@ abstract class AntCloudRequest
                                 $reqBizId = null,
                                 $authToken = null)
     {
-        $this->method = $method;
-        $this->version = $version;
+        $this->method            = $method;
+        $this->version           = $version;
         $this->productInstanceId = $productInstanceId;
-        $this->customer = $customer;
-        $this->tenant = $tenant;
-        $this->workspace = $workspace;
-        $this->reqMsgId = $reqMsgId;
-        $this->reqBizId = $reqBizId;
-        $this->authToken = $authToken;
+        $this->customer          = $customer;
+        $this->tenant            = $tenant;
+        $this->workspace         = $workspace;
+        $this->reqMsgId          = $reqMsgId;
+        $this->reqBizId          = $reqBizId;
+        $this->authToken         = $authToken;
     }
 
     /**

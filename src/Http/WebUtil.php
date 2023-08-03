@@ -99,8 +99,8 @@ class WebUtil
         }
 
         // get response
-        $body = curl_exec($ch);
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $body         = curl_exec($ch);
+        $status_code  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $httpResponse = new HttpResponse($status_code, $body);
         if (curl_errno($ch)) {
             throw new ClientException(ErrorCodes::ANTCLOUD_SDK_TRANSPORT_ERROR, "Server connect error, curl error number:" . curl_errno($ch) . " message:" . curl_error($ch));
